@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 22:25+0200\n"
+"PO-Revision-Date: 2024-10-21 22:26+0200\n"
+"Last-Translator: Ivan Perevala <ivan95perevala@gmail.com>\n"
+"Language-Team: uk <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Generated-By: Babel 2.16.0\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: ../../docs/core_features.rst:3
+msgid "Features"
+msgstr "Основні функції"
+
+#: ../../docs/core_features.rst:7
+msgid "Simultaneous Console and File Logging"
+msgstr "Одночасне ведення логів у консоль і файли"
+
+#: ../../docs/core_features.rst:9
+msgid ""
+"The package offers the ability to log messages both to the console and to log files simultaneously. Console logs are "
+"color-coded based on severity level for quick readability, while detailed logs are saved in a structured format in log "
+"files."
+msgstr ""
+"Пакет надає можливість записувати повідомлення як у консоль, так і у файли логів одночасно. Логи в консолі кольорові "
+"відповідно до рівня серйозності для зручнішого перегляду, тоді як детальні логи зберігаються у файли для подальшого "
+"аналізу."
+
+#: ../../docs/core_features.rst:12
+msgid "Colored Console Output"
+msgstr "Кольоровий вивід у консоль"
+
+#: ../../docs/core_features.rst:14
+msgid ""
+"Logs are color-coded by severity (e.g., INFO, WARNING, ERROR), making it easy for developers to distinguish between "
+"different log levels at a glance. This improves the debugging process by providing visual clarity."
+msgstr ""
+"Логи кодуються кольором залежно від рівня (INFO, WARNING, ERROR), що полегшує розрізнення повідомлень на перший погляд. "
+"Це покращує процес налагодження, забезпечуючи візуальну ясність."
+
+#: ../../docs/core_features.rst:17
+msgid "Log Level Customization"
+msgstr "Налаштування рівня логування"
+
+#: ../../docs/core_features.rst:19
+msgid ""
+"The package allows developers to control what log level is displayed in the console while all levels are stored in the "
+"log files. This way, you can focus on specific messages in real-time while still capturing a full log history for "
+"future reference."
+msgstr ""
+" Пакет дозволяє розробникам контролювати, який рівень логів відображається в консолі, тоді як усі рівні зберігаються у "
+"файли логів. Це дозволяє вам зосередитись на певних повідомленнях у режимі реального часу, зберігаючи повну історію "
+"логів для подальшого аналізу."
+
+#: ../../docs/core_features.rst:23
+msgid "Log File Rotation and Cleanup"
+msgstr "Ротація файлів логів та очищення"
+
+#: ../../docs/core_features.rst:25
+msgid "The package automates the cleanup of old log files, ensuring that your log directory remains manageable over time."
+msgstr "Пакет автоматично видаляє старі файли логів, забезпечуючи керованість каталогу логів з часом."
+
+#: ../../docs/core_features.rst:28
+msgid "Automatic Log Deletion"
+msgstr "Автоматичне видалення логів"
+
+#: ../../docs/core_features.rst:30
+msgid ""
+"When a new log file is created, older logs are automatically deleted based on a user-defined retention policy. You can "
+"configure how many logs to keep, preventing your log directory from becoming overcrowded and saving disk space."
+msgstr ""
+"Під час створення нового файлу логу старі логи видаляються відповідно до налаштованої політики збереження. Ви можете "
+"налаштувати кількість логів, що зберігаються, запобігаючи накопиченню зайвих файлів і зберігаючи місце на диску."
+
+#: ../../docs/core_features.rst:32 ../../docs/core_features.rst:61 ../../docs/core_features.rst:82
+msgid "Example:"
+msgstr "Приклад:"
+
+#: ../../docs/core_features.rst:43
+msgid "In this example, old logs are purged automatically, keeping only the most recent 30 log files."
+msgstr "У цьому прикладі старі логи автоматично видаляються, залишаючи тільки останні 30 файлів."
+
+#: ../../docs/core_features.rst:47
+msgid "Blender Addon Integration"
+msgstr "Інтеграція з аддонами Blender"
+
+#: ../../docs/core_features.rst:49
+msgid ""
+"The  package provides a specialized API designed for developers creating Blender addons. This API helps you track "
+"operator execution, log settings, and report messages both to the UI and to the log files simultaneously."
+msgstr ""
+"Пакет надає спеціалізований API для розробників аддонів для Blender, що допомагає відстежувати виконання операторів, "
+"логувати налаштування та повідомляти одночасно в UI і файли логів."
+
+#: ../../docs/core_features.rst:52
+msgid "Operator Execution Logs"
+msgstr "Логування виконання операторів"
+
+#: ../../docs/core_features.rst:54
+msgid ""
+"Track the start and end times of Blender operator executions and automatically log these events. This is particularly "
+"useful when performance tracking is important or when you need a clear audit trail for Blender's operations."
+msgstr ""
+"Відстежуйте час початку та завершення виконання операторів Blender та автоматично логуйте ці події. Це особливо "
+"корисно, коли важливо стежити за продуктивністю або коли необхідно мати чіткий запис про виконання операцій у Blender."
+
+#: ../../docs/core_features.rst:57
+msgid "Logging Settings and Scene Properties"
+msgstr "Логування налаштувань і властивостей сцени"
+
+#: ../../docs/core_features.rst:59
+msgid ""
+"The package allows developers to log Blender settings and scene properties easily. This is valuable when debugging or "
+"sharing the current state of the Blender environment."
+msgstr ""
+"Пакет дозволяє розробникам легко логувати налаштування Blender і властивості сцени, що є цінним під час налагодження "
+"або обміну інформацією про поточний стан середовища Blender."
+
+#: ../../docs/core_features.rst:75
+msgid ""
+"In this example, both the addon's preferences and scene properties are logged, providing insights into the current "
+"Blender configuration."
+msgstr ""
+"У цьому прикладі логуються як налаштування аддону, так і властивості сцени, що надає інформацію про поточну "
+"конфігурацію Blender."
+
+#: ../../docs/core_features.rst:78
+msgid "Unified Logging and Reporting"
+msgstr "Об'єднане логування та звітування"
+
+#: ../../docs/core_features.rst:80
+msgid ""
+"Blender operators often provide feedback to the user through `self.report`. With this package, you can log these "
+"messages to the log files while still reporting them in the UI, ensuring both user-facing and internal logs are "
+"captured."
+msgstr ""
+"Оператори Blender часто повідомляють користувачеві через `self.report`. За допомогою цього пакету ви можете одночасно "
+"логувати ці повідомлення у файли логів та відображати їх у інтерфейсі користувача, забезпечуючи фіксацію як повідомлень "
+"для користувача, так і внутрішніх логів."
+
+#: ../../docs/core_features.rst:95
+msgid ""
+"Here, a message is both reported in Blender’s UI and logged, providing a clear trace of what the user saw and what was "
+"logged internally."
+msgstr ""
+"У цьому випадку повідомлення одночасно відображається у UI Blender та записується до файлів логів, забезпечуючи чіткий "
+"запис того, що побачив користувач, і що було зафіксовано внутрішньо."
+
+#: ../../docs/core_features.rst:99
+msgid "Seamless Addon Code Integration"
+msgstr "Легка інтеграція з кодом аддону"
+
+#: ../../docs/core_features.rst:101
+msgid ""
+"The API is designed to be lightweight and easy to integrate into existing Blender addons, allowing developers to "
+"improve their logging without drastically altering their code. You can integrate it in your operator classes, logging "
+"key information such as settings and execution statuses."
+msgstr ""
+"API розроблено легким і простим для інтеграції в існуючі аддони Blender, дозволяючи розробникам поліпшити логування без "
+"кардинальних змін у коді. Ви можете інтегрувати його у класи операторів для логування ключової інформації, як-от "
+"налаштування та статуси виконання."

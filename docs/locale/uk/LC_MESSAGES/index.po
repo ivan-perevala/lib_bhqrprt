@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-20 23:17+0200\n"
+"PO-Revision-Date: 2024-10-21 22:10+0200\n"
+"Last-Translator: Ivan Perevala <ivan95perevala@gmail.com>\n"
+"Language-Team: uk <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : "
+"2);\n"
+"Generated-By: Babel 2.16.0\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: ../../index.rst:7
+msgid "About"
+msgstr "Опис"
+
+#: ../../index.rst:14
+msgid "API"
+msgstr ""
+
+#: ../../index.rst:2
+msgid "Python Logging and Blender Integration Package"
+msgstr "Пакет для роботи з логами та інтеграцією в Blender"
+
+#: ../../index.rst:4
+msgid ""
+"This Python package is designed to streamline the process of logging for both Python applications and Blender addon "
+"development. It provides advanced logging features such as automatic log file management, colored console outputs, "
+"and a specialized API for seamless integration with Blender’s operator execution processes. Whether you’re "
+"developing for Blender or a general Python project, this package ensures an efficient, structured, and easy-to-read "
+"logging experience."
+msgstr ""
+"Цей пакет Python призначений для спрощення процесу роботи з логами як у звичайних Python додатках, так і при "
+"розробці аддонів для Blender. Він забезпечує розширені можливості роботи з логами, такі як автоматичне керування "
+"файлами логів, кольоровий вивід у консоль, а також спеціалізований API для плавної інтеграції з процесами виконання "
+"операторів Blender. Незалежно від того, чи розробляєте ви для Blender або для загальних проектів на Python, цей "
+"пакет забезпечує ефективний, структурований і легкий у читанні спосіб ведення логів."
+
+#: ../../index.rst:23
+msgid "Indices and tables"
+msgstr "Зміст"
+
+#: ../../index.rst:25
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../index.rst:26
+msgid ":ref:`modindex`"
+msgstr ""

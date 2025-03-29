@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-22 00:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../docs/integration.rst:3
+msgid "Integration"
+msgstr ""
+
+#: ../../docs/integration.rst:5
+msgid ""
+"This section describes methods that can be used to integrate the logging system into Blender addons. To better "
+"understand the process, addon code is provided at the end to test the package's functionality "
+"(`bhqrprt_functional_test`):"
+msgstr ""
+
+#: ../../docs/integration.rst:10
+msgid "Basic functionality"
+msgstr ""
+
+#: ../../docs/integration.rst:12
+msgid ""
+"These functions can also be used outside of Blender addons. However, for integration into addons, the following "
+"changes need to be made:"
+msgstr ""
+
+#: ../../docs/integration.rst:14
+msgid "**Defining the directory for log files**"
+msgstr ""
+
+#: ../../docs/integration.rst:16
+msgid "In this case, the addon directory (`./logs`) will be used."
+msgstr ""
+
+#: ../../docs/integration.rst:20
+msgid "It is important that this directory exists at the moment of the call."
+msgstr ""
+
+#: ../../docs/integration.rst:26
+msgid "**Deleting unnecessary files**"
+msgstr ""
+
+#: ../../docs/integration.rst:28
+msgid "In this example, the last 30 log files will be kept."
+msgstr ""
+
+#: ../../docs/integration.rst:34
+msgid "**Initializing the logging system**"
+msgstr ""
+
+#: ../../docs/integration.rst:36
+msgid ""
+"This will create a log file for the current session, a custom logger for colorful console output with a custom "
+"formatter."
+msgstr ""
+
+#: ../../docs/integration.rst:42
+msgid "A logger for outputting messages in the current package module."
+msgstr ""
+
+#: ../../docs/integration.rst:50
+msgid "Using in Blender"
+msgstr ""
+
+#: ../../docs/integration.rst:52
+msgid "Here are examples of usage in different parts of the addon."
+msgstr ""
+
+#: ../../docs/integration.rst:54
+msgid "**Operator execution wrapper**"
+msgstr ""
+
+#: ../../docs/integration.rst:56
+msgid ""
+"Here the operator execution method uses a package decorator, so first a log is made about the start of execution, "
+"then the original method is called (it may contain initial messages), and then a log is output about the status and "
+"execution time."
+msgstr ""
+
+#: ../../docs/integration.rst:67
+msgid "**Simultaneous report and log**"
+msgstr ""
+
+#: ../../docs/integration.rst:69
+msgid "The call will make a report in the user interface, write the message to a file, and display it in the console."
+msgstr ""
+
+#: ../../docs/integration.rst:84
+msgid "**Test property in user settings**"
+msgstr ""
+
+#: ../../docs/integration.rst:86
+msgid "Changing it will log the change in the property's value."
+msgstr ""
+
+#: ../../docs/integration.rst:98
+msgid "**Displaying log file paths in the user interface**"
+msgstr ""
+
+#: ../../docs/integration.rst:108
+msgid "Full Example"
+msgstr ""
+
+#: ../../docs/integration.rst:112
+msgid "This code will work if the package is correctly installed in Blender."
+msgstr ""
+
+#~ msgid ""
+#~ "Для того щоб краще зрозуміти процес інтеграції пакунка в "
+#~ "доповнення, нижче приведено код аддону для тестування функціоналу "
+#~ "пакунку:"
+#~ msgstr ""
+
+#~ msgid ":file:`../bhqrprt_functional_test/__init__.py`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Для того щоб краще зрозуміти процес інтеграції пакунка в "
+#~ "доповнення, нижче приведено код аддону для тестування функціоналу "
+#~ "пакунку (`bhqrprt_functional_test`):"
+#~ msgstr ""
+

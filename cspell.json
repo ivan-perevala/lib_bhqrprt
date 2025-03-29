@@ -1,0 +1,43 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [
+        "en-US"
+    ],
+    "words": [
+        "addopts",
+        "autoclass",
+        "autofunction",
+        "automodule",
+        "bhqrprt",
+        "caplog",
+        "capsys",
+        "cvar",
+        "fstr",
+        "furo",
+        "genindex",
+        "idname",
+        "ivar",
+        "ivpe",
+        "levelname",
+        "levelno",
+        "modindex",
+        "msgctxt",
+        "mypy",
+        "Perevala",
+        "pylint",
+        "pyproject",
+        "pyright",
+        "pytest",
+        "pythonpath",
+        "rtype",
+        "seealso",
+        "setuptools",
+        "testpaths",
+        "toctree"
+    ],
+    "ignoreWords": [],
+    "import": [],
+    "language": "en"
+}

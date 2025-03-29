@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-20 23:17+0200\n"
+"PO-Revision-Date: 2024-10-22 00:33+0200\n"
+"Last-Translator: Ivan Perevala <ivan95perevala@gmail.com>\n"
+"Language-Team: uk <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : "
+"2);\n"
+"Generated-By: Babel 2.16.0\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: ../../blender.rst:2
+msgid "Blender API"
+msgstr ""
+
+#: bhqrprt._bl:1 of
+msgid ""
+"The following functions are specifically designed for Blender integration, providing logging capabilities tailored "
+"for use within Blender add-ons. They enhance the operator execution process, allowing simultaneous logging and "
+"reporting in the Blender UI, and are closely tied to Blender's internal data structures and workflows."
+msgstr ""
+"Наступні функції спеціально розроблені для інтеграції з Blender, забезпечуючи можливості логування, адаптовані для "
+"використання в доповненнях Blender. Вони покращують процес виконання операторів, дозволяючи одночасне логування та "
+"репортування в інтерфейсі Blender, і тісно пов'язані з внутрішніми структурами даних і робочими процесами Blender."
+
+#: bhqrprt._bl.report_and_log:1 of
+msgid "Logs a message and simultaneously reports it in the Blender UI."
+msgstr ""
+
+#: bhqrprt._bl.report_and_log:3 of
+msgid ""
+"This function logs a message with the specified severity level and also displays the same message in the Blender UI "
+"using the operator's reporting system. It is useful for providing feedback to the user while also keeping a record "
+"in the log file."
+msgstr ""
+"Ця функція записує повідомлення з вказаним рівнем важливості та також відображає те ж повідомлення в інтерфейсі "
+"Blender, використовуючи систему звітності оператора. Це корисно для надання зворотного зв'язку користувачу, "
+"одночасно ведучи облік у лог-файлі."
+
+#: ../../blender.rst
+msgid "Parameters"
+msgstr "Параметри"
+
+#: bhqrprt._bl.report_and_log:7 of
+msgid "The logger instance to log the message."
+msgstr " Екземпляр логера для запису повідомлення."
+
+#: bhqrprt._bl.report_and_log:10 of
+msgid "The Blender operator instance that will report the message."
+msgstr "Екземпляр оператора Blender, який повідомить про повідомлення."
+
+#: bhqrprt._bl.report_and_log:13 of
+msgid "The severity level of the message (e.g., logging.WARNING, logging.ERROR)."
+msgstr "Рівень важливості повідомлення (наприклад, logging.WARNING, logging.ERROR)."
+
+#: bhqrprt._bl.report_and_log:16 of
+msgid "The message text to be logged and reported."
+msgstr "Текст повідомлення, яке потрібно записати та звітувати."
+
+#: bhqrprt._bl.report_and_log:19 of
+msgid "The context of the message, defining where and how it is displayed in the UI."
+msgstr "Контекст повідомлення, що визначає, де і як воно відображається в інтерфейсі."
+
+#: bhqrprt._bl.report_and_log:22 of
+msgid "Additional keyword arguments to further customize the message."
+msgstr "Додаткові ключові аргументи для подальшої настройки повідомлення."
+
+#: ../../blender.rst
+msgid "Returns"
+msgstr "Повертає"
+
+#: bhqrprt._bl.log_settings:14 bhqrprt._bl.report_and_log:25 bhqrprt._bl.template_ui_draw_paths:16 of
+msgid "None"
+msgstr ""
+
+#: ../../blender.rst
+msgid "Return type"
+msgstr "Тип повернених даних"
+
+#: bhqrprt._bl.log_execution_helper:1 of
+msgid "Decorator that logs the start and end of an operator's execution, including execution time and result."
+msgstr "Декоратор, який записує початок та кінець виконання оператора, включаючи час виконання та результат."
+
+#: bhqrprt._bl.log_execution_helper:3 of
+msgid ""
+"This decorator wraps a Blender operator's `execute` method, automatically logging when the execution starts and "
+"finishes. It also logs the execution time and the result (success or failure), providing useful insight into "
+"operator performance and behavior."
+msgstr ""
+"Цей декоратор обгортає метод execute оператора Blender, автоматично записуючи, коли починається та закінчується "
+"виконання. Він також записує час виконання та результат (успіх чи невдача), надаючи корисну інформацію про "
+"продуктивність і поведінку оператора."
+
+#: bhqrprt._bl.log_execution_helper:7 of
+msgid "The operator's `execute` method to be wrapped with logging functionality."
+msgstr "Метод execute оператора, який потрібно обгорнути функціональністю логування."
+
+#: bhqrprt._bl.log_execution_helper:10 of
+msgid "The wrapped execute method with added logging."
+msgstr "Обгорнутий метод виконання з доданим логуванням."
+
+#: bhqrprt._bl.log_settings:1 of
+msgid "Logs the properties of a Blender structure (e.g., AddonPreferences, Scene)."
+msgstr "Логує властивості структури Blender (наприклад, AddonPreferences, Scene)."
+
+#: bhqrprt._bl.log_settings:3 of
+msgid ""
+"This function logs detailed information about the properties of a given Blender data structure. It is useful for "
+"tracking settings and state during debugging or when monitoring the behavior of Blender add-ons."
+msgstr ""
+"Ця функція записує детальну інформацію про властивості даної структури даних Blender. Вона корисна для відстеження "
+"налаштувань та стану під час налагодження або при моніторингу поведінки аддонів Blender."
+
+#: bhqrprt._bl.log_settings:7 of
+msgid "The logger instance used to record the properties."
+msgstr "Екземпляр логера, який використовується для запису властивостей."
+
+#: bhqrprt._bl.log_settings:10 of
+msgid "A Blender data structure (such as AddonPreferences or Scene) whose properties will be logged."
+msgstr "Структура даних Blender (така як AddonPreferences або Scene), властивості якої будуть записані."
+
+#: bhqrprt._bl.update_log_setting_changed:1 of
+msgid "Returns a function that logs when a Blender property value is changed."
+msgstr "Повертає функцію, яка записує, коли змінюється значення властивості Blender."
+
+#: bhqrprt._bl.update_log_setting_changed:3 of
+msgid ""
+"This function is typically used as an `update` callback for `bpy.props.*` properties. It logs whenever the value of "
+"the specified property changes, helping to track changes in settings or other properties during runtime."
+msgstr ""
+"Ця функція зазвичай використовується як зворотний виклик update для властивостей bpy.props.*. Вона записує, коли "
+"значення вказаної властивості змінюється, що допомагає відстежувати зміни в налаштуваннях або інших властивостях під "
+"час виконання."
+
+#: bhqrprt._bl.update_log_setting_changed:7 of
+msgid "The logger instance used to log the property change."
+msgstr "Екземпляр логера, який використовується для запису зміни властивості."
+
+#: bhqrprt._bl.update_log_setting_changed:10 of
+msgid "A string identifier for the property being logged, used for clarity in the log output."
+msgstr "Рядковий ідентифікатор для властивості, що записується, використовується для ясності в лог-виході."
+
+#: bhqrprt._bl.update_log_setting_changed:13 of
+msgid "A callable function that logs the change when the property value is updated."
+msgstr "Викликаюча функція, яка записує зміну, коли значення властивості оновлюється."
+
+#: bhqrprt._bl.get_prop_log_level:1 of
+msgid "Returns an EnumProperty for log levels, typically used in add-on preferences."
+msgstr "Повертає EnumProperty для рівнів логування, зазвичай використовуваний в налаштуваннях аддона."
+
+#: bhqrprt._bl.get_prop_log_level:3 of
+msgid ""
+"This function generates a Blender `EnumProperty` for selecting log levels (e.g., INFO, WARNING, ERROR) in add-on "
+"preferences. It allows users to set the desired log level for the add-on's logging behavior."
+msgstr ""
+"Ця функція генерує EnumProperty Blender для вибору рівнів логування (наприклад, INFO, WARNING, ERROR) в "
+"налаштуваннях аддона. Вона дозволяє користувачам встановлювати бажаний рівень логування для поведінки логування "
+"аддона."
+
+#: bhqrprt._bl.get_prop_log_level:6 of
+msgid "The logger instance, primarily used for reference and context."
+msgstr "Екземпляр логера, який в основному використовується для посилання та контексту."
+
+#: bhqrprt._bl.get_prop_log_level:9 of
+msgid "A string identifier for the property, used in the add-on preferences."
+msgstr "Рядковий ідентифікатор для властивості, що використовується в налаштуваннях аддона."
+
+#: bhqrprt._bl.get_prop_log_level:12 of
+msgid "A Blender `EnumProperty` for selecting log levels."
+msgstr "`EnumProperty`  для вибору рівнів логування."
+
+#: bhqrprt._bl.template_ui_draw_paths:1 of
+msgid "Displays UI elements for log file paths, allowing users to open the logs directory or current session log file."
+msgstr ""
+"Відображає елементи інтерфейсу для шляхів до лог-файлів, дозволяючи користувачам відкривати директорію логів або лог-"
+"файл поточної сесії."
+
+#: bhqrprt._bl.template_ui_draw_paths:3 of
+msgid ""
+"This function is used in the Blender UI to show paths related to log files. It provides buttons for opening the "
+"directory containing log files and the log file for the current session. Useful for making log management accessible "
+"directly from the UI."
+msgstr ""
+"Ця функція використовується в інтерфейсі Blender для відображення шляхів, пов'язаних з лог-файлами. Вона надає "
+"кнопки для відкриття директорії, що містить лог-файли, та лог-файлу для поточної сесії. Корисно для забезпечення "
+"доступності управління логами безпосередньо з інтерфейсу."
+
+#: bhqrprt._bl.template_ui_draw_paths:7 of
+msgid "The logger instance used for logging any actions taken from the UI."
+msgstr "Екземпляр логера, який використовується для запису будь-яких дій, виконаних з інтерфейсу."
+
+#: bhqrprt._bl.template_ui_draw_paths:10 of
+msgid "The UI layout where the log file paths and buttons will be drawn."
+msgstr "Макет інтерфейсу, в якому будуть намальовані шляхи до лог-файлів та кнопки."
+
+#: bhqrprt._bl.template_ui_draw_paths:13 of
+msgid "Context for the messages displayed in the UI, providing additional detail."
+msgstr "Контекст для повідомлень, відображених в інтерфейсі, що надає додаткові деталі."

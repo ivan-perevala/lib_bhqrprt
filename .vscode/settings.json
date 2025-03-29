@@ -1,0 +1,18 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/.venv_win": true,
+        "**/.vscode": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/**.egg-info": true,
+    },
+    "editor.rulers": [
+        120,
+    ],
+    "autoDocstring.docstringFormat": "sphinx",
+    "python.analysis.extraPaths": [
+        "../py_launch_blender"
+    ]
+}

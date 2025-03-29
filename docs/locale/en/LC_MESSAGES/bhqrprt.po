@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 21:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../docs/bhqrprt.rst:2
+msgid "bhqrprt"
+msgstr ""
+
+#: bhqrprt._reports:1 of
+msgid "The non-Blender-specific part of the package includes two main functionalities:"
+msgstr ""
+
+#: bhqrprt._reports:3 of
+msgid ""
+"**Logger Setup (`setup_logger`)**: This function configures logging to both the console (with color-coded output "
+"based on log levels) and log files, ensuring all log messages are recorded for debugging and monitoring purposes."
+msgstr ""
+
+#: bhqrprt._reports:5 of
+msgid ""
+"**Log Purging (`purge_old_logs`)**: This feature automatically deletes older log files, retaining only a "
+"configurable number of recent logs, helping to manage disk space and prevent log accumulation."
+msgstr ""
+
+#: bhqrprt._reports:7 of
+msgid "These functionalities are suitable for any Python application and do not depend on Blender."
+msgstr ""
+
+#: bhqrprt._reports.setup_logger:1 of
+msgid "Sets up logging to output both to the console and to log files in the specified directory."
+msgstr ""
+
+#: bhqrprt._reports.setup_logger:3 of
+msgid ""
+"This function configures the logging system to write logs to both the console (with color-coded log levels) and to "
+"log files stored in the specified directory. All log messages are recorded to the log file, while only messages from"
+" a specific log level and above are shown in the console."
+msgstr ""
+
+#: ../../docs/bhqrprt.rst
+msgid "Parameters"
+msgstr ""
+
+#: bhqrprt._reports.setup_logger:7 of
+msgid "The path to the directory where log files will be stored."
+msgstr ""
+
+#: ../../docs/bhqrprt.rst
+msgid "Returns"
+msgstr ""
+
+#: bhqrprt._reports.purge_old_logs:13 bhqrprt._reports.setup_logger:10 of
+msgid "None"
+msgstr ""
+
+#: ../../docs/bhqrprt.rst
+msgid "Return type"
+msgstr ""
+
+#: bhqrprt._reports.purge_old_logs:1 of
+msgid "Deletes old log files, keeping only a specified number of recent logs."
+msgstr ""
+
+#: bhqrprt._reports.purge_old_logs:3 of
+msgid ""
+"This function automatically purges older log files in the specified directory, retaining only a set number of the "
+"most recent logs. This helps prevent excessive accumulation of log files and manages disk space efficiently."
+msgstr ""
+
+#: bhqrprt._reports.purge_old_logs:7 of
+msgid "The path to the directory containing the log files."
+msgstr ""
+
+#: bhqrprt._reports.purge_old_logs:10 of
+msgid "The maximum number of log files to keep in the directory."
+msgstr ""
+

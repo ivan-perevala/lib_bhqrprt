@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023-2024, BlenderHQ
+# This file is distributed under the same license as the bhqrprt package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bhqrprt 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-22 00:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../docs/integration_uk.rst:3
+msgid "Integration"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:5
+msgid ""
+"Тут описано методи які можна використати для інтеграції системи логів в доповнення Blender. Для того щоб краще "
+"зрозуміти процес, наприкінці приведено код аддону для тестування функціоналу пакунку (`bhqrprt_functional_test`):"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:10
+msgid "Базовий функціонал"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:12
+msgid ""
+"Ці функції можна використовувати і поза доповненнями Blender. Але для інтеграції в доповнення необхідно зробити такі"
+" зміни до доповнення:"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:14
+msgid "**Визначаємо директорію для лог-файлів**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:16
+msgid "Для цього, в даному випадку, буде використано директорію доповнення (`./logs`)."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:20
+msgid "Важливо щоб ця директорія існувала на момент виклику"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:26
+msgid "**Видаляємо непотрібні файли**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:28
+msgid "В даному прикладі буде збережено останні 30 файлів логів."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:34
+msgid "**Ініціалізуємо систему логів**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:36
+msgid ""
+"Це створить файл логу для поточної сесії, кастомний логгер для кольорового виведення в консоль з кастомним "
+"форматером."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:42
+msgid "Логгер для виведення повідомлень в поточному модулі пакунка."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:50
+msgid "Використання в Blender"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:52
+msgid "Тут наведено приклади використання в різних частинах доповнення."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:54
+msgid "**Обгортка виконання оператора**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:56
+msgid ""
+"Тут метод виконання оператора використовує декоратор пакунка, тому спершу буде зроблено лог про початок виконання, "
+"далі викликано оригінальний метод (може містити інці повідомлення), а потім буде виведено лог про статус і час "
+"виконання."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:67
+msgid "**Одночасний репорт і лог**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:69
+msgid "Виклик зробить репорт в користувацькому інтерфейсі, запише повідомлення в файл і виведе в консоль"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:84
+msgid "**Тестова властивість користувацьких налаштувань**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:86
+msgid "Її оновлення зробить лог про зміну значення властивості."
+msgstr ""
+
+#: ../../docs/integration_uk.rst:98
+msgid "**Показ шляхів до файлів логів в користувацькому інтерфейсі**"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:108
+msgid "Повний приклад"
+msgstr ""
+
+#: ../../docs/integration_uk.rst:112
+msgid "Даний код буде працювати якщо пакунок правильно встановлено в Blender"
+msgstr ""
+
