@@ -16,7 +16,6 @@ This Python package is designed to streamline the process of logging for both Py
     :caption: API
 
     pages/bhqrprt
-    pages/blender
 
 
 Indices and tables

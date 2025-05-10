@@ -1,8 +1,7 @@
 bhqrprt
-=======
+#######
 
-.. automodule:: bhqrprt._reports
+.. automodule:: bhqrprt
+    :members:
 
-.. autofunction:: bhqrprt.setup_logger
-
-.. autofunction:: bhqrprt.purge_old_logs
+.. include:: ../links.inc

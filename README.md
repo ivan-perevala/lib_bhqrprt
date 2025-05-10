@@ -2,7 +2,7 @@
 
 This Python package is designed to streamline the process of logging for both Python applications and Blender extension development. It provides advanced logging features such as automatic log file management, colored console outputs, and a specialized API for seamless integration with Blender's operator execution processes. Whether you're developing for Blender or a general Python project, this package ensures an efficient, structured, and easy-to-read logging experience.
 
-![Report and Log](./docs/_static/images/report_and_log.jpg)
+![Report and Log](./docs/images/report_and_log.jpg)
 
 ## Core Features:
 

@@ -1,11 +1,8 @@
-###########
 Integration
 ###########
 
-This section describes methods that can be used to integrate the logging system into Blender addons.
-To better understand the process, addon code is provided at the end to test the package's functionality (`bhqrprt_functional_test`):
+This section describes methods that can be used to integrate the logging system into Blender extensions.
 
-===================
 Basic functionality
 ===================
 
@@ -45,7 +42,6 @@ A logger for outputting messages in the current package module.
 
     log = logging.getLogger(name=__name__)
 
-================
 Using in Blender
 ================
 
