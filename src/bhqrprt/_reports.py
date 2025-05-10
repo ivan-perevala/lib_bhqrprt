@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020-2024 Ivan Perevala <ivan95perevala@gmail.com>
+# SPDX-FileCopyrightText: 2020-2025 Ivan Perevala <ivan95perevala@gmail.com>
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -87,7 +87,7 @@ def purge_old_logs(*, directory: str, max_num_logs: int) -> None:
             break
 
 
-def setup_logger(*, name: None | str = None, directory: str) -> None:
+def setup_logger(*, log: logging.Logger, directory: str) -> None:
     """Logger setup. Log messages would be printed to console and saved to a file in the specified directory.
 
     :param directory: Log files directory.
@@ -95,10 +95,9 @@ def setup_logger(*, name: None | str = None, directory: str) -> None:
     :param name: Logger name, root logger would be used if not specified, defaults to None
     :type name: None | str, optional
     """
+
     log_filename = datetime.now().strftime(fr"log %d-%m-%Y %H-%M-%S.%f{_LOG_FILE_EXTENSION}")
     log_filepath = os.path.join(directory, log_filename)
-
-    log = logging.getLogger(name=name)
 
     console_handler = logging.StreamHandler()
     console_formatter = _ColoredFormatter()
