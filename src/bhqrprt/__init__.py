@@ -3,7 +3,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 """
-This Python package is designed to streamline the process of logging for both Python applications and Blender addon development. It provides advanced logging features such as automatic log file management, colored console outputs, and a specialized API for seamless integration with Blender's operator execution processes. Whether you're developing for Blender or a general Python project, this package ensures an efficient, structured, and easy-to-read logging experience.
+Python package designed to streamline the process of logging for both Python applications and Blender
+extensions development. It provides advanced logging features such as automatic log file management, colored console
+outputs, and a specialized API for seamless integration with Blender's operator execution processes.
 """
 
 from __future__ import annotations
@@ -35,7 +37,7 @@ from . _reports import purge_old_logs, setup_logger, teardown_logger, get_log_fi
 
 if HAS_BPY:
     from . import _bl
-    from . _bl import report_and_log, log_execution_helper, log_settings, update_log_setting_changed, get_prop_log_level, template_ui_draw_paths
+    from . _bl import report_and_log, log_execution_helper, log_settings, update_log_setting_changed, get_prop_log_level, template_ui_draw_paths, template_submit_issue, register_reports, unregister_reports
 
 __all__ = (
     "HAS_BPY",
@@ -53,4 +55,7 @@ __all__ = (
     "update_log_setting_changed",
     "get_prop_log_level",
     "template_ui_draw_paths",
+    "template_submit_issue",
+    "register_reports",
+    "unregister_reports",
 )

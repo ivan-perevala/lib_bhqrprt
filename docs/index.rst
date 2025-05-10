@@ -8,15 +8,15 @@ This Python package is designed to streamline the process of logging for both Py
     :maxdepth: 4
     :caption: About
 
-    core_features
-    integration
+    pages/core_features
+    pages/integration
 
 .. toctree::
     :maxdepth: 4
     :caption: API
 
-    bhqrprt
-    blender
+    pages/bhqrprt
+    pages/blender
 
 
 Indices and tables

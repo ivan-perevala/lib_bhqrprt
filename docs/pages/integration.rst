@@ -62,7 +62,7 @@ Here the operator execution method uses a package decorator, so first a log is m
         log.info("Logging info during operator execution call")
         return {'FINISHED'}
 
-.. image:: _static/images/log_execution_helper.jpg
+.. image:: images/log_execution_helper.jpg
 
 - **Simultaneous report and log** 
 
@@ -79,7 +79,7 @@ The call will make a report in the user interface, write the message to a file, 
         )
         return {'FINISHED'}
 
-.. image:: _static/images/report_and_log.jpg
+.. image:: images/report_and_log.jpg
 
 - **Test property in user settings**
 
@@ -93,7 +93,7 @@ Changing it will log the change in the property's value.
         description="Changing this property should make a debug log with information about the property name and new value",
     )
 
-.. image:: _static/images/update_log_setting_changed.jpg
+.. image:: images/update_log_setting_changed.jpg
 
 - **Displaying log file paths in the user interface**
 
@@ -101,15 +101,4 @@ Changing it will log the change in the property's value.
 
         bhqrprt.template_ui_draw_paths(log, col, msgctxt="")
 
-.. image:: _static/images/template_ui_draw_paths.jpg
-
-============
-Full Example
-============
-
-.. note:: 
-    
-    This code will work if the package is correctly installed in Blender.
-
-.. literalinclude:: ../bhqrprt_functional_test/__init__.py
-    :language: python
+.. image:: images/template_ui_draw_paths.jpg
