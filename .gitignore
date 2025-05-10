@@ -24,5 +24,8 @@ build/
 _build/
 **.egg-info/
 
+# Blender file history
+*.blend[1,2,3,4,5,6,7,8,9]
+
 # Keep directory layout
 !.gitkeep
