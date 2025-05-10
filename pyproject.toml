@@ -13,10 +13,13 @@ authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 maintainers = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 license = { text = "MIT" }
 
-# Python version used by Blender 4.3
+# Python version used by Blender 4.4
 # TODO: Test and update pyproject.toml w.r.t. required Blender version.
 requires-python = ">=3.11"
-dynamic = ["dependencies", "optional-dependencies"]
+
+[project.optional-dependencies]
+tests = ["pytest"]
+docs = ["sphinx", "sphinx-intl", "furo"]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # setuptools used here, might be changed because this method considered legacy.
@@ -36,12 +39,6 @@ where = ["src"]
 # https://setuptools.pypa.io/en/latest/userguide/datafiles.html#package-data
 [tool.setuptools.package-data]
 "bhqrprt" = ["./LICENSE"]
-
-# ----------------------------------------------------------------------------------------------------------------------
-# Use requirements.txt as dynamic metadata for requirements.
-# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html#dynamic-metadata
-[tool.setuptools.dynamic]
-dependencies = { file = ["requirements.txt"] }
 
 # ----------------------------------------------------------------------------------------------------------------------
 # MyPy configuration.
