@@ -7,13 +7,13 @@ from __future__ import annotations
 import os
 import re
 import logging
+from logging import Logger, Formatter
 from datetime import datetime
 
 __all__ = (
-    "purge_old_logs",
     "setup_logger",
     "teardown_logger",
-    "get_log_filepath",
+    "purge_old_logs",
 )
 
 _LOG_FILE_EXTENSION = '.txt'
@@ -34,17 +34,58 @@ class _ColoredFormatter(logging.Formatter):
     __format = '{levelname:>8} {name} {funcName:}: {message}'
 
     _formatters = {
-        logging.DEBUG: logging.Formatter(f'{__CYAN}{__format}{__RESET}', style='{'),
-        logging.INFO: logging.Formatter(f'{__GREEN}{__format}{__RESET}', style='{'),
-        logging.WARNING: logging.Formatter(f'{__YELLOW}{__format}{__RESET}', style='{'),
-        logging.ERROR: logging.Formatter(f'{__PURPLE}{__format}{__RESET}', style='{'),
-        logging.CRITICAL: logging.Formatter(f'{__RED}{__format}{__RESET}', style='{'),
+        logging.DEBUG: Formatter(f'{__CYAN}{__format}{__RESET}', style='{'),
+        logging.INFO: Formatter(f'{__GREEN}{__format}{__RESET}', style='{'),
+        logging.WARNING: Formatter(f'{__YELLOW}{__format}{__RESET}', style='{'),
+        logging.ERROR: Formatter(f'{__PURPLE}{__format}{__RESET}', style='{'),
+        logging.CRITICAL: Formatter(f'{__RED}{__format}{__RESET}', style='{'),
     }
 
     def format(self, record: logging.LogRecord) -> str:
         fmt = self._formatters.get(record.levelno)
         assert fmt
         return fmt.format(record)
+
+
+def setup_logger(*, log: Logger, directory: str) -> None:
+    """Logger setup. Log messages would be printed to console and saved to a file in the specified directory.
+
+    :param log: Root logger.
+    :type log: logging.Logger
+    :param directory: Log files directory.
+    :type directory: str
+    """
+
+    log_filename = datetime.now().strftime(fr"log %d-%m-%Y %H-%M-%S.%f{_LOG_FILE_EXTENSION}")
+    log_filepath = os.path.join(directory, log_filename)
+
+    console_handler = logging.StreamHandler()
+    console_formatter = _ColoredFormatter()
+    console_handler.setFormatter(console_formatter)
+    console_handler.setLevel(logging.DEBUG)
+    log.addHandler(console_handler)
+
+    file_handler = logging.FileHandler(filename=log_filepath, mode='w', encoding='utf-8')
+    file_formatter = logging.Formatter(fmt='{levelname:>8} {asctime} {name} {funcName:}: {message}', style='{')
+    file_handler.setFormatter(file_formatter)
+    file_handler.setLevel(logging.DEBUG)
+
+    log.addHandler(file_handler)
+
+    log.setLevel(logging.DEBUG)
+
+
+def teardown_logger(*, log: logging.Logger) -> None:
+    """Tears down logger setup by removing all handlers from it.
+
+    :param log: Root logger.
+    :type log: logging.Logger
+    """
+
+    while log.handlers:
+        handler = log.handlers[-1]
+        handler.close()
+        log.removeHandler(handler)
 
 
 def purge_old_logs(*, directory: str, max_num_logs: int) -> None:
@@ -85,66 +126,3 @@ def purge_old_logs(*, directory: str, max_num_logs: int) -> None:
             os.remove(os.path.join(directory, filename))
         except OSError:
             break
-
-
-def setup_logger(*, log: logging.Logger, directory: str) -> None:
-    """Logger setup. Log messages would be printed to console and saved to a file in the specified directory.
-
-    :param directory: Log files directory.
-    :type directory: str
-    :param name: Logger name, root logger would be used if not specified, defaults to None
-    :type name: None | str, optional
-    """
-
-    log_filename = datetime.now().strftime(fr"log %d-%m-%Y %H-%M-%S.%f{_LOG_FILE_EXTENSION}")
-    log_filepath = os.path.join(directory, log_filename)
-
-    console_handler = logging.StreamHandler()
-    console_formatter = _ColoredFormatter()
-    console_handler.setFormatter(console_formatter)
-    console_handler.setLevel(logging.DEBUG)
-    log.addHandler(console_handler)
-
-    file_handler = logging.FileHandler(filename=log_filepath, mode='w', encoding='utf-8')
-    file_formatter = logging.Formatter(fmt='{levelname:>8} {asctime} {name} {funcName:}: {message}', style='{')
-    file_handler.setFormatter(file_formatter)
-    file_handler.setLevel(logging.DEBUG)
-
-    log.addHandler(file_handler)
-
-    log.setLevel(logging.DEBUG)
-
-
-def teardown_logger(*, name: None | str = None) -> None:
-    """Tears down logger setup by removing all handlers from it.
-
-    :param name: Logger name, root logger would be used if not specified, defaults to None
-    :type name: None | str, optional
-    """
-
-    log = logging.getLogger(name=name)
-
-    while log.handlers:
-        handler = log.handlers[-1]
-        handler.close()
-        log.removeHandler(handler)
-
-
-def get_log_filepath(*, name: None | str = None) -> None | str:
-    """Log file path, available after setting up logger with :func:`setup_logger`
-
-    :param name: Logger name, root logger would be used if not specified, defaults to None
-    :type name: None | str, optional
-    :return: Log file path or None if logger was not set up for logging into file.
-    :rtype: None | str
-    """
-
-    log = logging.getLogger(name=name)
-
-    filepath = None
-
-    for handler in log.root.handlers:
-        if isinstance(handler, logging.FileHandler):
-            filepath = handler.baseFilename
-
-    return filepath

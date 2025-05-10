@@ -12,6 +12,11 @@ from __future__ import annotations
 
 from typing import Any
 
+HAS_BPY: bool = False
+"""If ``bpy`` module is available. Most of functionality of this module depends on it.
+Value is constant, and evaluated at import time.
+"""
+
 try:
     import bpy as _bpy_check
 except ImportError:
@@ -33,11 +38,11 @@ if __debug__:
     del __reload_submodules
 
 from . import _reports
-from . _reports import purge_old_logs, setup_logger, teardown_logger, get_log_filepath
+from . _reports import purge_old_logs, setup_logger, teardown_logger
 
 if HAS_BPY:
     from . import _bl
-    from . _bl import report_and_log, log_execution_helper, log_settings, update_log_setting_changed, get_prop_log_level, template_ui_draw_paths, template_submit_issue, register_reports, unregister_reports
+    from . _bl import report_and_log, log_execution_helper, update_log_setting_changed, template_submit_issue, register_reports, unregister_reports
 
 __all__ = (
     "HAS_BPY",
@@ -46,15 +51,11 @@ __all__ = (
     "purge_old_logs",
     "setup_logger",
     "teardown_logger",
-    "get_log_filepath",
 
     # file://./_bl.py
     "report_and_log",
     "log_execution_helper",
-    "log_settings",
     "update_log_setting_changed",
-    "get_prop_log_level",
-    "template_ui_draw_paths",
     "template_submit_issue",
     "register_reports",
     "unregister_reports",
