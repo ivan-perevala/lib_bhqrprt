@@ -11,11 +11,9 @@
 
 from __future__ import annotations
 
-import inspect
 import logging
 import os
 import pprint
-import textwrap
 import time
 from typing import Any, Callable, Type
 from logging import Logger
@@ -23,7 +21,7 @@ from logging import Logger
 import bpy
 from bpy.app.translations import pgettext
 from bpy.props import EnumProperty, PointerProperty, IntProperty, StringProperty
-from bpy.types import Context, Operator, UILayout, bpy_prop_array, bpy_struct, AddonPreferences, PropertyGroup
+from bpy.types import Context, Operator, UILayout, bpy_prop_array, bpy_struct, AddonPreferences, PropertyGroup, Event
 
 from . import _reports
 
@@ -33,7 +31,7 @@ __all__ = (
     "template_submit_issue",
     "log_bpy_struct_properties",
     "report_and_log",
-    "log_execution_helper",
+    "operator_report",
     "update_log_setting_changed",
 )
 
@@ -363,7 +361,6 @@ def template_submit_issue(layout: UILayout, url: str):
 
         Function would work only if :func:`bhqrprt.register_reports` was used. Otherwise, it would do nothing.
 
-
     .. note::
 
         This functionality available only from within Blender.
@@ -425,78 +422,60 @@ def report_and_log(
             operator.report(type={'ERROR'}, message=report_message)
 
 
-def _filter_paths_from_keywords(*, keywords: dict[str, Any]) -> dict[str, Any]:
-    _str_hidden = "(hidden for security reasons)"
-    arg_filepath = keywords.get("filepath", None)
-    arg_directory = keywords.get("directory", None)
-    arg_filename = keywords.get("filename", None)
-
-    if arg_filepath is not None and arg_filepath:
-        if os.path.exists(bpy.path.abspath(arg_filepath)):
-            filepath_fmt = f"Existing File Path {_str_hidden}"
-        else:
-            filepath_fmt = f"Missing File Path {_str_hidden}"
-
-        keywords["filepath"] = filepath_fmt
-
-    if arg_directory is not None and arg_directory:
-        if os.path.isdir(bpy.path.abspath(arg_directory)):
-            directory_fmt = f"Existing Directory Path {_str_hidden}"
-        else:
-            directory_fmt = f"Missing Directory Path {_str_hidden}"
-
-        keywords["directory"] = directory_fmt
-
-    if arg_filename is not None and arg_filename:
-        keywords["filename"] = f"Some Filename {_str_hidden}"
-
-    return keywords
+_ExecuteFunctionType = Callable[[Operator, Context], set[int | str]]
+_InvokeFunctionType = Callable[[Operator, Context, Event], set[int | str]]
+_OperatorFunctionType = _ExecuteFunctionType | _InvokeFunctionType
 
 
-def log_execution_helper(
-        ot_execute_method: Callable[[Operator, Context], set[int | str]]
-) -> Callable[[Operator, Context], set[int | str]]:
-    """Operator's execution helper decorator. It will first print which operator and with which options is being called,
-    then call the operator's method and print the execution result in the log.
-    For security reasons, `filepath`, `directory` and `filename` keywords would be hidden. Only information about their
-    existance would be logged.
+def operator_report(log: logging.Logger, ignore: tuple[str, ...] = tuple()):
+    """Operator report helper. 
 
-    .. note::
-
-        This functionality available only from within Blender.
-
-    :param ot_execute_method: Current operator's execution method.
-    :type ot_execute_method: Callable[[Operator, Context], set[int | str]]
-    :return: Operator's execution result.
-    :rtype: Callable[[Operator, Context], set[int | str]]
+    :param log: Logger.
+    :type log: logging.Logger
+    :param ignore: Keywords which should not be logged for some reason, defaults to tuple()
+    :type ignore: tuple[str, ...], optional
     """
 
-    log = logging.getLogger(inspect.stack()[2].filename)
+    def _factory(func: _OperatorFunctionType) -> _OperatorFunctionType:
+        assert func.__name__ in {"invoke", "execute"}
 
-    def execute(operator, context):
-        props = operator.as_keywords()
+        def _format_properties(self: Operator) -> None | str:
+            props = self.as_keywords(ignore=ignore)
+            if props:
+                return pprint.pformat(props, indent=4, compact=False)
 
-        if props:
-            props_fmt = textwrap.indent(
-                pprint.pformat(
-                    _filter_paths_from_keywords(keywords=props),
-                    indent=4,
-                    compact=False),
-                prefix=' ' * 40
-            )
-            log.debug(f"\"{operator.bl_label}\" execution begin with properties:\n{props_fmt}")
+        def execute(operator: Operator, context: Context):
+            if props_text := _format_properties(operator):
+                log.debug(f"\"{operator.bl_label}\" execution begin with properties:{props_text}")
+            else:
+                log.debug(f"\"{operator.bl_label}\" execution begin")
+
+            dt = time.time()
+            ret = func(operator, context)
+            log.debug(f"\"{operator.bl_label}\" execution ended as {ret} in {time.time() - dt:.6f} second(s)")
+
+            return ret
+
+        def invoke(operator: Operator, context: Context, event: Event):
+            if props_text := _format_properties(operator):
+                log.debug(f"\"{operator.bl_label}\" invoking with properties:{props_text}")
+            else:
+                log.debug(f"\"{operator.bl_label}\" invoking")
+
+            dt = time.time()
+            ret = func(operator, context, event)
+            log.debug(f"\"{operator.bl_label}\" invoked with {ret} in {time.time() - dt:.6f} second(s)")
+
+            return ret
+
+        if func.__name__ == "execute":
+            return execute
+        elif func.__name__ == "invoke":
+            return invoke
         else:
-            log.debug(f"\"{operator.bl_label}\" execution begin")
+            raise NotImplementedError(f"\"{func.__name__}\" is unsupported")
 
-        dt = time.time()
-
-        ret = ot_execute_method(operator, context)
-
-        log.debug(f"\"{operator.bl_label}\" execution ended as {ret} in {time.time() - dt:.6f} second(s)")
-
-        return ret
-
-    return execute
+    return _factory
 
 
 def update_log_setting_changed(log: Logger, identifier: str) -> Callable[[bpy_struct, Context], None]:

@@ -42,7 +42,7 @@ from . _reports import purge_old_logs, setup_logger, teardown_logger
 
 if HAS_BPY:
     from . import _bl
-    from . _bl import register_reports, unregister_reports, template_submit_issue, log_bpy_struct_properties, report_and_log, log_execution_helper, update_log_setting_changed
+    from . _bl import register_reports, unregister_reports, template_submit_issue, log_bpy_struct_properties, report_and_log, log_execution_helper, update_log_setting_changed, operator_report
 
 __all__ = (
     "HAS_BPY",
@@ -59,5 +59,6 @@ __all__ = (
     "log_bpy_struct_properties",
     "report_and_log",
     "log_execution_helper",
+    "operator_report",
     "update_log_setting_changed",
 )
