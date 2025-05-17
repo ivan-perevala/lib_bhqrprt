@@ -142,6 +142,56 @@ def _get_logger_file_handler(log: Logger) -> None | logging.FileHandler:
             return handler
 
 
+def _get_bpy_struct_property_value(*, item: bpy_struct, identifier: str):
+    return getattr(item, identifier, "(readonly)")
+
+
+def _format_bpy_struct_property_value(*, value: bool | int | float | str | bpy_prop_array) -> str:
+    if isinstance(value, float):
+        return '%.6f' % value
+    elif isinstance(value, str):
+        if '\n' in value:
+            return value.split('\n')[0][:-1] + " ... (multi-lined string skipped)"
+        elif len(value) > 50:
+            return value[:51] + " ... (long string skipped)"
+    elif isinstance(value, bpy_prop_array):
+        return ", ".join((_format_bpy_struct_property_value(value=_) for _ in value))
+
+    return str(value)
+
+
+def log_bpy_struct_properties(log: Logger, *, struct: bpy_struct, indent: int = 0) -> None:
+    """Log properties of `bpy_struct`_. For pointer properties, recursive calls would be used.
+    Long strings would be trimmed and for multi-line strings only first line would be logged. Floating point values would
+    be formatted with 6 digits precision.
+
+    :param log: Logger.
+    :type log: Logger
+    :param struct: Source structure to log properties from.
+    :type struct: `bpy_struct`_
+    :param indent: Indentation level, defaults to 0
+    :type indent: int, optional
+    """
+
+    for prop in struct.bl_rna.properties:
+        if prop.identifier in {
+            # Blacklist of internal Blender properties, they should not be logged.
+            'rna_type',
+            'name',
+            'bl_idname',
+        }:
+            continue
+
+        if type(prop.rna_type) == bpy.types.PointerProperty:
+            # Recursive call for pointer properties:
+            log.debug(f"{prop.identifier} (\"{prop.name}\"):")
+            log_bpy_struct_properties(log, struct=getattr(struct, prop.identifier), indent=indent + 1)
+        else:
+            value = _format_bpy_struct_property_value(
+                value=_get_bpy_struct_property_value(item=struct, identifier=prop.identifier))
+            log.debug(f"{' ' * 4 * indent}{prop.identifier}: {value}")
+
+
 def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: str):
     """Wrapper decorator to be used with extension's `register` function. It would setup logging system, add properties
     and draw method to existing user preferences class and set current logging level to log level saved in preferences.
@@ -199,24 +249,15 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
 
         return _draw_wrapper
 
-    def _log_settings(log: Logger, *, item: bpy_struct) -> None:
-        for prop in item.bl_rna.properties:
-            identifier = prop.identifier
-            if identifier != 'rna_type':
-                value = _get_value(item=item, identifier=identifier)
-                value_fmt = _format_setting_value(value=value)
-
-                log.debug("{identifier}: {value_fmt}".format(identifier=identifier, value_fmt=value_fmt))
-
-                if type(prop.rna_type) == bpy.types.PointerProperty:
-                    _log_settings(log, item=getattr(item, prop.identifier))
-
     def _register_helper(register):
         def _register():
             _reports.setup_logger(log=log, directory=directory)
 
             _LogSettingsRegistry.register_log_settings_class(log)
-            pref_cls.__annotations__['bhqrprt'] = PointerProperty(type=_LogSettingsRegistry.BHQRPRT_log_settings)
+            pref_cls.__annotations__['bhqrprt'] = PointerProperty(
+                type=_LogSettingsRegistry.BHQRPRT_log_settings,
+                name="Log Settings",
+            )
 
             register()
 
@@ -234,7 +275,7 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
 
                         _reports.purge_old_logs(directory=directory, max_num_logs=addon_pref.bhqrprt.max_num_logs)
 
-                        _log_settings(log, item=addon_pref)
+                        _log_bpy_struct_properties(log, struct=addon_pref)
 
                     _SubmitIssueRegistry.ensure_register_submit_issue_operator(log)
 
@@ -416,6 +457,8 @@ def log_execution_helper(
 ) -> Callable[[Operator, Context], set[int | str]]:
     """Operator's execution helper decorator. It will first print which operator and with which options is being called,
     then call the operator's method and print the execution result in the log.
+    For security reasons, `filepath`, `directory` and `filename` keywords would be hidden. Only information about their
+    existance would be logged.
 
     .. note::
 
@@ -455,27 +498,11 @@ def log_execution_helper(
     return execute
 
 
-def _get_value(*, item: object, identifier: str):
-    return getattr(item, identifier, "(readonly)")
-
-
-def _format_setting_value(*, value: bool | int | float | str | bpy_prop_array) -> str:
-    if isinstance(value, float):
-        return '%.6f' % value
-    elif isinstance(value, str):
-        if '\n' in value:
-            return value.split('\n')[0][:-1] + " ... (multi-lined string skipped)"
-        elif len(value) > 50:
-            return value[:51] + " ... (long string skipped)"
-    elif isinstance(value, bpy_prop_array):
-        return ", ".join((_format_setting_value(value=_) for _ in value))
-
-    return str(value)
-
-
 def update_log_setting_changed(log: Logger, identifier: str) -> Callable[[bpy_struct, Context], None]:
     """Method for updating properties. If the property has been updated, it must be logged. Commonly used for
     logging preferences and scene changes.
+    Long strings would be trimmed and for multi-line strings only first line would be logged. Floating point values would
+    be formatted with 6 digits precision.
 
     :param log: Current module logger.
     :type log: Logger
@@ -486,8 +513,8 @@ def update_log_setting_changed(log: Logger, identifier: str) -> Callable[[bpy_st
     """
 
     def _log_setting_changed(self, _context: Context):
-        value = _get_value(item=self, identifier=identifier)
-        value_fmt = _format_setting_value(value=value)
+        value = _get_bpy_struct_property_value(item=self, identifier=identifier)
+        value_fmt = _format_bpy_struct_property_value(value=value)
         log.debug(f"Setting updated \'{self.bl_rna.name}.{identifier}\': {value_fmt}")
 
     return _log_setting_changed
