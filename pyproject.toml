@@ -8,7 +8,7 @@
 [project]
 version = "1.0.0"
 name = "bhqrprt"
-description = "BlenderHQ logging system"
+description = "Logging system for Blender extensions"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 maintainers = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 license = { text = "MIT" }
