@@ -38,7 +38,7 @@ where = ["src"]
 # Include LICENSE files as package data for project.
 # https://setuptools.pypa.io/en/latest/userguide/datafiles.html#package-data
 [tool.setuptools.package-data]
-"bhqrprt" = ["./LICENSE"]
+"bhqrprt" = ["./LICENSE", "icons/*.dat"]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # MyPy configuration.
