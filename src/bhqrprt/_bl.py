@@ -40,6 +40,15 @@ _CUR_DIR = os.path.dirname(__file__)
 _ICONS_DIR = os.path.join(_CUR_DIR, "icons")
 
 
+def _eval_name(name: str):
+    name_eval = name.replace('.', '_')
+
+    if len(name_eval) > 30:
+        name_eval = name_eval[:30]
+
+    return name_eval
+
+
 class _LogSettingsRegistry:
     BHQRPRT_log_settings: None | Type[PropertyGroup] = None
 
@@ -89,7 +98,7 @@ class _LogSettingsRegistry:
         if cls.BHQRPRT_log_settings:
             bpy.utils.unregister_class(cls.BHQRPRT_log_settings)
 
-        name = log.name.replace('.', '_')
+        name = _eval_name(log.name)
 
         cls.BHQRPRT_log_settings = type(
             f"BHQRPRT_{name}_log_settings",
@@ -271,7 +280,7 @@ class _SubmitIssueRegistry:
         if cls.BHQRPRT_OT_submit_issue:
             return
 
-        name = log.name.replace('.', '_')
+        name = _eval_name(log.name)
 
         handler = _get_logger_file_handler(log)
         if handler:
