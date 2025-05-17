@@ -31,6 +31,7 @@ __all__ = (
     "register_reports",
     "unregister_reports",
     "template_submit_issue",
+    "log_bpy_struct_properties",
     "report_and_log",
     "log_execution_helper",
     "update_log_setting_changed",

@@ -42,7 +42,7 @@ from . _reports import purge_old_logs, setup_logger, teardown_logger
 
 if HAS_BPY:
     from . import _bl
-    from . _bl import report_and_log, log_execution_helper, update_log_setting_changed, template_submit_issue, register_reports, unregister_reports
+    from . _bl import register_reports, unregister_reports, template_submit_issue, log_bpy_struct_properties, report_and_log, log_execution_helper, update_log_setting_changed
 
 __all__ = (
     "HAS_BPY",
@@ -53,10 +53,11 @@ __all__ = (
     "teardown_logger",
 
     # file://./_bl.py
+    "register_reports",
+    "unregister_reports",
+    "template_submit_issue",
+    "log_bpy_struct_properties",
     "report_and_log",
     "log_execution_helper",
     "update_log_setting_changed",
-    "template_submit_issue",
-    "register_reports",
-    "unregister_reports",
 )
