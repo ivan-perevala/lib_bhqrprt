@@ -276,7 +276,7 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
 
                         _reports.purge_old_logs(directory=directory, max_num_logs=addon_pref.bhqrprt.max_num_logs)
 
-                        _log_bpy_struct_properties(log, struct=addon_pref)
+                        log_bpy_struct_properties(log, struct=addon_pref)
 
                     _SubmitIssueRegistry.ensure_register_submit_issue_operator(log)
 
