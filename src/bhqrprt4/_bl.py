@@ -39,13 +39,14 @@ _CUR_DIR = os.path.dirname(__file__)
 _ICONS_DIR = os.path.join(_CUR_DIR, "icons")
 
 
-def _eval_name(name: str):
-    name_eval = name.replace('.', '_')
-
-    if len(name_eval) > 30:
-        name_eval = name_eval[:30]
-
-    return name_eval
+def _eval_logging_struct_name(name: str):
+    if len(name) < 20:
+        return name.replace('.', '_')
+    else:
+        i = name.rfind('.')
+        if i != -1:
+            return name[i + 1:]
+        raise AssertionError(f"Name \"{name}\" is too long")
 
 
 class _LogSettingsRegistry:
@@ -59,7 +60,7 @@ class _LogSettingsRegistry:
             'WARNING': logging.WARNING,
             'INFO': logging.INFO,
             'DEBUG': logging.DEBUG,
-        }  # NOTE: logging.getLevelNamesMapping() is not suitable here, it contains duplicates which are simplier remove here.
+        }  # NOTE: logging.getLevelNamesMapping() is not suitable here, it contains duplicates which are simpler remove here.
 
         def _update_log_level(self, context: Context):
             value = getattr(self, identifier)
@@ -97,7 +98,7 @@ class _LogSettingsRegistry:
         if cls.BHQRPRT_log_settings:
             bpy.utils.unregister_class(cls.BHQRPRT_log_settings)
 
-        name = _eval_name(log.name)
+        name = _eval_logging_struct_name(log.name)
 
         cls.BHQRPRT_log_settings = type(
             f"BHQRPRT_{name}_log_settings",
@@ -320,7 +321,7 @@ class _SubmitIssueRegistry:
         if cls.BHQRPRT_OT_submit_issue:
             return
 
-        name = _eval_name(log.name)
+        name = _eval_logging_struct_name(log.name)
 
         handler = _get_logger_file_handler(log)
         if handler:
@@ -429,7 +430,7 @@ _OperatorFunctionType = _ExecuteFunctionType | _InvokeFunctionType
 
 def operator_report(log: logging.Logger, ignore: tuple[str, ...] = tuple()):
     """Operator report helper. 
-    
+
     .. note::
 
         This functionality available only from within Blender.
@@ -487,7 +488,7 @@ def update_log_setting_changed(log: Logger, identifier: str) -> Callable[[bpy_st
     logging preferences and scene changes.
     Long strings would be trimmed and for multi-line strings only first line would be logged. Floating point values would
     be formatted with 6 digits precision.
-    
+
     .. note::
 
         This functionality available only from within Blender.
