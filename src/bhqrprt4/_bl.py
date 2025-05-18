@@ -131,13 +131,13 @@ class _LogSettingsRegistry:
 
 
 def _get_logger_stream_handler(log: Logger) -> None | logging.StreamHandler:
-    for handler in log.root.handlers:
+    for handler in log.handlers:
         if isinstance(handler, logging.StreamHandler):
             return handler
 
 
 def _get_logger_file_handler(log: Logger) -> None | logging.FileHandler:
-    for handler in log.root.handlers:
+    for handler in log.handlers:
         if isinstance(handler, logging.FileHandler):
             return handler
 
