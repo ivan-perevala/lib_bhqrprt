@@ -6,7 +6,7 @@
 
 # ----------------------------------------------------------------------------------------------------------------------
 [project]
-version = "1.0.0"
+version = "4.2.0"
 name = "bhqrprt"
 description = "Logging system for Blender extensions"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
@@ -38,7 +38,7 @@ where = ["src"]
 # Include LICENSE files as package data for project.
 # https://setuptools.pypa.io/en/latest/userguide/datafiles.html#package-data
 [tool.setuptools.package-data]
-"bhqrprt" = ["./LICENSE", "icons/*.dat"]
+"bhqrprt4" = ["./LICENSE", "icons/*.dat"]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # MyPy configuration.

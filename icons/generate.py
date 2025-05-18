@@ -25,7 +25,7 @@ if __name__ == '__main__':
             os.path.join(cur_dir, "blender_icons_geom.py"),
             "--",
             "--output-dir",
-            os.path.join(root_dir, "src", "bhqrprt", "icons"),
+            os.path.join(root_dir, "src", "bhqrprt4", "icons"),
         ],
         universal_newlines=True,
     )

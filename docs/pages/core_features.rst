@@ -33,7 +33,7 @@ Example:
 
 .. code-block:: python
 
-    import bhqrprt
+    import bhqrprt4 as bhqrprt
     logs_directory = os.path.join(os.path.dirname(__file__), "logs")
     bhqrprt.purge_old_logs(directory=logs_directory, max_num_logs=30)
     bhqrprt.setup_logger(directory=logs_directory)

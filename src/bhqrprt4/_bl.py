@@ -196,8 +196,8 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
     and draw method to existing user preferences class and set current logging level to log level saved in preferences.
 
     .. seealso::
-        :func:`bhqrprt.setup_logger`
-        :func:`bhqrprt.unregister_reports`
+        :func:`setup_logger`
+        :func:`unregister_reports`
 
     .. note::
 
@@ -288,8 +288,8 @@ def unregister_reports(log: Logger):
     :func:`register_reports` call and tears down reports.
 
     .. seealso::
-        :func:`bhqrprt.register_reports`
-        :func:`bhqrprt.teardown_logger`
+        :func:`register_reports`
+        :func:`teardown_logger`
 
     .. note::
 
@@ -359,7 +359,7 @@ def template_submit_issue(layout: UILayout, url: str):
 
     .. seealso::
 
-        Function would work only if :func:`bhqrprt.register_reports` was used. Otherwise, it would do nothing.
+        Function would work only if :func:`register_reports` was used. Otherwise, it would do nothing.
 
     .. note::
 
