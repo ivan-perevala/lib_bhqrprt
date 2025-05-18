@@ -11,7 +11,7 @@ name = "bhqrprt"
 description = "Logging system for Blender extensions"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 maintainers = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
-license = { text = "MIT" }
+license = { text = "GPL-3.0-or-later" }
 
 # Python version used by Blender 4.4
 # TODO: Test and update pyproject.toml w.r.t. required Blender version.
