@@ -92,7 +92,7 @@ def setup_logger(*, log: Logger, directory: str) -> None:
 
     if is_directory_created:
         log.info(f"Log files directory has been created: \"{directory}\"")
-    else:
+    elif create_directory_err:
         log.error(f"Unable to create logging directory \"directory\", logging only to console: {create_directory_err}")
 
 
