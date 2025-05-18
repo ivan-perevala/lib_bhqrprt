@@ -56,8 +56,20 @@ def setup_logger(*, log: Logger, directory: str) -> None:
     :type directory: str
     """
 
-    log_filename = datetime.now().strftime(fr"log %d-%m-%Y %H-%M-%S.%f{_LOG_FILE_EXTENSION}")
-    log_filepath = os.path.join(directory, log_filename)
+    is_directory_exist = False
+    is_directory_created = False
+    create_directory_err = None
+
+    if os.path.isdir(directory):
+        is_directory_exist = True
+    else:
+        try:
+            os.makedirs(directory)
+        except OSError as err:
+            create_directory_err = err
+        else:
+            is_directory_exist = True
+            is_directory_created = True
 
     console_handler = logging.StreamHandler()
     console_formatter = _ColoredFormatter()
@@ -65,14 +77,23 @@ def setup_logger(*, log: Logger, directory: str) -> None:
     console_handler.setLevel(logging.DEBUG)
     log.addHandler(console_handler)
 
-    file_handler = logging.FileHandler(filename=log_filepath, mode='w', encoding='utf-8')
-    file_formatter = logging.Formatter(fmt='{levelname:>8} {asctime} {name} {funcName:}: {message}', style='{')
-    file_handler.setFormatter(file_formatter)
-    file_handler.setLevel(logging.DEBUG)
+    if is_directory_exist:
+        log_filename = datetime.now().strftime(fr"log %d-%m-%Y %H-%M-%S.%f{_LOG_FILE_EXTENSION}")
+        log_filepath = os.path.join(directory, log_filename)
 
-    log.addHandler(file_handler)
+        file_handler = logging.FileHandler(filename=log_filepath, mode='w', encoding='utf-8')
+        file_formatter = logging.Formatter(fmt='{levelname:>8} {asctime} {name} {funcName:}: {message}', style='{')
+        file_handler.setFormatter(file_formatter)
+        file_handler.setLevel(logging.DEBUG)
+
+        log.addHandler(file_handler)
 
     log.setLevel(logging.DEBUG)
+
+    if is_directory_created:
+        log.info(f"Log files directory has been created: \"{directory}\"")
+    else:
+        log.error(f"Unable to create logging directory \"directory\", logging only to console: {create_directory_err}")
 
 
 def teardown_logger(*, log: logging.Logger) -> None:
@@ -96,6 +117,9 @@ def purge_old_logs(*, directory: str, max_num_logs: int) -> None:
     :param max_num_logs: Maximum number of log files in output directory.
     :type max_num_logs: int
     """
+
+    if not os.path.isdir(directory):
+        return
 
     if not max_num_logs:
         return
