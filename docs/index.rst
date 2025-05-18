@@ -1,15 +1,17 @@
+.. SPDX-FileCopyrightText: 2025 Ivan Perevala <ivan95perevala@gmail.com>
+
+.. SPDX-License-Identifier: GPL-3.0-or-later
+
 Python Logging and Blender Integration Package
 ==============================================
 
-This Python package is designed to streamline the process of logging for both Python applications and Blender addon development. It provides advanced logging features such as automatic log file management, colored console outputs, and a specialized API for seamless integration with Blender’s operator execution processes. Whether you’re developing for Blender or a general Python project, this package ensures an efficient, structured, and easy-to-read logging experience.
-
+Python package designed to streamline the process of logging for Blender extension development. It provides advanced logging features such as automatic log file management, colored console outputs, and a specialized API for seamless integration with Blender.
 
 .. toctree::
     :maxdepth: 4
     :caption: About
 
     pages/core_features
-    pages/integration
 
 .. toctree::
     :maxdepth: 4

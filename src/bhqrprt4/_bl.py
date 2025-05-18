@@ -429,6 +429,10 @@ _OperatorFunctionType = _ExecuteFunctionType | _InvokeFunctionType
 
 def operator_report(log: logging.Logger, ignore: tuple[str, ...] = tuple()):
     """Operator report helper. 
+    
+    .. note::
+
+        This functionality available only from within Blender.
 
     :param log: Logger.
     :type log: logging.Logger
@@ -483,6 +487,10 @@ def update_log_setting_changed(log: Logger, identifier: str) -> Callable[[bpy_st
     logging preferences and scene changes.
     Long strings would be trimmed and for multi-line strings only first line would be logged. Floating point values would
     be formatted with 6 digits precision.
+    
+    .. note::
+
+        This functionality available only from within Blender.
 
     :param log: Current module logger.
     :type log: Logger
