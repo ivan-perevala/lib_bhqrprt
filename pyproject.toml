@@ -17,9 +17,14 @@ license = { text = "GPL-3.0-or-later" }
 # TODO: Test and update pyproject.toml w.r.t. required Blender version.
 requires-python = ">=3.11"
 
-[project.optional-dependencies]
-tests = ["pytest"]
-docs = ["sphinx", "sphinx-intl", "furo"]
+dynamic = ["optional-dependencies"]
+
+[tool.setuptools.dynamic]
+optional-dependencies = { docs = { file = [
+    "requirements-docs.txt",
+] }, tests = { file = [
+    "requirements-tests.txt",
+] } }
 
 # ----------------------------------------------------------------------------------------------------------------------
 # setuptools used here, might be changed because this method considered legacy.
