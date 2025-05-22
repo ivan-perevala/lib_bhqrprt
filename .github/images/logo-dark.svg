@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 799 399" width="799" height="399"><defs></defs><g>
+<g>
+	<g>
+		<path d="M24.5,19L 775.5,19 L 775.5,64 L 24.5,64 L 24.5,19 Z" fill="#c83030"/>
+	</g>
+	<g>
+		<path d="M24.5,94L 775.5,94 L 775.5,139 L 24.5,139 L 24.5,94 Z" transform="matrix(1,0,0,1,0,0)" fill="#cf6dcf"/>
+	</g>
+	<g>
+		<path d="M24.5,169L 775.5,169 L 775.5,214 L 24.5,214 L 24.5,169 Z" transform="matrix(1,0,0,1,0,0)" fill="#dcdc11"/>
+	</g>
+	<g>
+		<path d="M24.5,244L 775.5,244 L 775.5,289 L 24.5,289 L 24.5,244 Z" transform="matrix(1,0,0,1,0,0)" fill="#23cf8a"/>
+	</g>
+	<g>
+		<path d="M24.5,319L 775.5,319 L 775.5,364 L 24.5,364 L 24.5,319 Z" transform="matrix(1,0,0,1,0,0)" fill="#29b8db"/>
+	</g>
+</g></g></svg>

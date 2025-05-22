@@ -6,18 +6,23 @@
 
 # ----------------------------------------------------------------------------------------------------------------------
 [project]
-version = "4.2.0"
 name = "bhqrprt"
-description = "Logging system for Blender extensions"
+version = "4.2.0"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
-maintainers = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
-license = { text = "GPL-3.0-or-later" }
+description = "Logging system for Blender extensions"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 
 # Python version used by Blender 4.4
 # TODO: Test and update pyproject.toml w.r.t. required Blender version.
 requires-python = ">=3.11"
 
 dynamic = ["optional-dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/ivan-perevala/lib_bhqrprt"
+Issues = "https://github.com/ivan-perevala/lib_bhqrprt/issues"
+Documentation = "https://lib-bhqrprt.readthedocs.io/4.2.0/"
 
 [tool.setuptools.dynamic]
 optional-dependencies = { docs = { file = [
