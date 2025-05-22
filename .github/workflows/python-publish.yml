@@ -37,6 +37,6 @@ jobs:
 
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        NOTE: For test Pypi
+        # NOTE: For test Pypi
         with:
           repository-url: https://test.pypi.org/legacy/
