@@ -109,3 +109,9 @@ pythonpath = ["./src"]
 
 #https://docs.pytest.org/en/stable/reference/reference.html#confval-testpaths
 testpaths = ["tests"]
+
+# https://github.com/codespell-project/codespell?tab=readme-ov-file#using-a-config-file
+[tool.codespell]
+skip = './build,./dist,./docs/_build'
+count = true
+quiet-level = 3

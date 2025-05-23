@@ -3,7 +3,7 @@ Features
 
 Package offers a few advantages for logging:
 
-* **Blender addon integration** - its easy to inject into existing addons. ``bhqprprt`` uses function decorators for registration functions and operator execution methods and provides functions for UI display, structure members logging, ect.
+* **Blender addon integration** - its easy to inject into existing addons. ``bhqprprt`` uses function decorators for registration functions and operator execution methods and provides functions for UI display, structure members logging, etc.
 
 * **Colored console output** - logs should be human-readable. Its easier to find red message in the console than "WARNING" word. ``bhqrprt`` uses ASCII escape sequences to achieve this.
 

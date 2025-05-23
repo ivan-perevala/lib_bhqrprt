@@ -14,7 +14,7 @@ CURRENT_DIR = Path(os.path.dirname(__file__))
 # Make module available in path
 sys.path.append(str((CURRENT_DIR / "../src/").resolve()))
 
-# Re-use data from "../pyproject.toml" file instead of writing it directly
+# Reuse data from "../pyproject.toml" file instead of writing it directly
 with open((CURRENT_DIR / "../pyproject.toml").resolve(), 'rb') as pyproject_file:
     pyproject = tomllib.load(pyproject_file)
 

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # ---
-# NOTE: At this moment, there is Blender stubs which would work perfectly. Thats why most of static type checks should
+# NOTE: At this moment, there is Blender stubs which would work perfectly. That's why most of static type checks should
 # be just ignored:
 #
 # type: ignore
