@@ -46,12 +46,11 @@ class _ColoredFormatter(logging.Formatter):
         assert fmt
         return fmt.format(record)
 
-
 def setup_logger(*, log: Logger, directory: str) -> None:
-    """Logger setup. Log messages would be printed to console and saved to a file in the specified directory.
+    """Sets up logger to log messages to console and to a file in the specified directory.
 
     :param log: Root logger.
-    :type log: logging.Logger
+    :type log: Logger
     :param directory: Log files directory.
     :type directory: str
     """

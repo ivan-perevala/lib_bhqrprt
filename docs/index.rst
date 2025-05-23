@@ -5,7 +5,43 @@
 Python Logging and Blender Integration Package
 ==============================================
 
-Python package designed to streamline the process of logging for Blender extension development. It provides advanced logging features such as automatic log file management, colored console outputs, and a specialized API for seamless integration with Blender.
+.. image::
+   https://img.shields.io/pypi/v/bhqrprt.svg
+   :alt: PyPI
+   :target: https://pypi.org/project/bhqrprt/
+
+.. image::
+   https://img.shields.io/pypi/status/bhqrprt.svg
+   :alt: PyPI
+   :target: https://pypi.org/project/bhqrprt/
+
+.. image::
+   https://img.shields.io/badge/License-MIT-yellow.svg
+   :alt: License: MIT
+   :target: https://opensource.org/licenses/MIT
+
+.. image::
+   https://readthedocs.org/projects/lib-bhqrprt/badge/?version=latest
+   :alt: Documentation Status
+   :target: https://lib-bhqrprt.readthedocs.io/latest
+
+.. image::
+   https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml/badge.svg
+   :alt: Tests
+
+.. .. image::
+..    https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/python-tests.yml/badge.svg
+..    :alt: Tests
+
+Links
+*****
+
+* `GitHub Repository <https://github.com/ivan-perevala/lib_bhqrprt>`_
+
+* Project is `available on PyPI <https://pypi.org/project/bhqrprt>`_:
+   .. code-block:: powershell
+      
+      pip install bhqrprt
 
 .. toctree::
     :maxdepth: 4
@@ -15,7 +51,7 @@ Python package designed to streamline the process of logging for Blender extensi
 
 .. toctree::
     :maxdepth: 4
-    :caption: API
+    :caption: Contents
 
     pages/bhqrprt
 
