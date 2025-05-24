@@ -49,17 +49,10 @@ jobs:
            sp.run([r'${PYTHON_BIN}', '-m', 'pip', 'install', '--upgrade', 'pip'], check=True); \
            sp.run([r'${PYTHON_BIN}', '-m', 'pip', 'install', 'pytest'], check=True)"
 
-      - name: Run pytest inside Blender (root dir)
+      - name: Run pytest
         env:
           PYTHONPATH: ${{ github.workspace }}/src
           BLENDER_USER_SCRIPTS: ${{ github.workspace }}/src
-        run: |
-          PYTHON_BIN=$(find "${{ env.BLENDER_DIR }}" -type f -name "python3*" | head -n 1)
-          echo "Using Python binary: ${PYTHON_BIN}"
 
-          "${{ env.BLENDER_DIR }}/blender" --background --python-expr \
-          "import subprocess as sp; \
-           result = sp.run([r'${PYTHON_BIN}', '-m', 'pytest', '--maxfail=1', '--disable-warnings', '-v'], check=False); \
-           if result.returncode != 0: \
-               print('Pytest failed!'); \
-               exit(result.returncode)"
+        run: |
+          pytest
