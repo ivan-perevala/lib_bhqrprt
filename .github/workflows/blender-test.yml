@@ -42,11 +42,11 @@ jobs:
       - name: Install pytest in Blender's Python
         run: |
           BLENDER_MAJOR_MINOR=$(echo "${{ env.BLENDER_VERSION }}" | cut -d. -f1,2)
-          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11m"
+          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11"
 
           "${{ env.BLENDER_DIR }}/blender" --background --python-expr \
           "import subprocess as sp; \
-           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11m'; \
+           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11'; \
            sp.run([python_bin, '-m', 'ensurepip']); \
            sp.run([python_bin, '-m', 'pip', 'install', '--upgrade', 'pip']); \
            sp.run([python_bin, '-m', 'pip', 'install', 'pytest'])"
@@ -57,9 +57,9 @@ jobs:
           BLENDER_USER_SCRIPTS: ${{ github.workspace }}/src
         run: |
           BLENDER_MAJOR_MINOR=$(echo "${{ env.BLENDER_VERSION }}" | cut -d. -f1,2)
-          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11m"
+          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11"
 
           "${{ env.BLENDER_DIR }}/blender" --background --python-expr \
           "import subprocess as sp; \
-           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11m'; \
+           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11'; \
            sp.run([python_bin, '-m', 'pytest', '--maxfail=1', '--disable-warnings', '-v', 'src'])"
