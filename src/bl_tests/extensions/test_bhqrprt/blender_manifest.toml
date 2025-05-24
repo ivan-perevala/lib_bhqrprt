@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2025 Ivan Perevala <ivan95perevala@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# https://docs.blender.org/manual/en/latest/advanced/extensions/getting_started.html#manifest
+
+schema_version = "1.0.0"
+
+id = "test_bhqrprt"
+version = "4.2.0"
+name = "Test bhqrprt (Development)"
+tagline = "Test addon for bhqrprt module"
+maintainer = "Ivan Perevala <ivan95perevala@gmail.com>"
+type = "add-on"
+permissions = ["files"]
+website = "https://github.com/ivan-perevala/multiple_camera_render"
+tags = ["Development"]
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+copyright = ["2020-2025 Ivan Perevala"]
