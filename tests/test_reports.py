@@ -14,7 +14,7 @@ def test_one():
         "--python-exit-code",
         "255",
     ]
-    proc = subprocess.Popen(cli, env=os.environ)
+    proc = subprocess.Popen(cli, env=os.environ, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 
     while proc.poll() is None:
         pass
