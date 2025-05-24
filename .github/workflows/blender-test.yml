@@ -58,4 +58,4 @@ jobs:
           echo "Using Python binary: ${PYTHON_BIN}"
 
           # Run pytest using Blender's bundled python directly
-          "${PYTHON_BIN}" -m pytest --maxfail=1 --disable-warnings -v || exit $?
+          "${PYTHON_BIN}" -m pytest --maxfail=1 --disable-warnings -s -v || exit $?
