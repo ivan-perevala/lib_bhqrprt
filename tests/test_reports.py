@@ -1,2 +1,8 @@
+import os
+import shutil
+
+
 def test_one():
-    assert False
+    blender = shutil.which('blender', path=os.environ.get("BLENDER_DIR"))
+
+    assert blender
