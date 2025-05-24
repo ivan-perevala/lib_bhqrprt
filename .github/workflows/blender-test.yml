@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        blender_version: ["4.2.0", "4.3.0"]  # Add newer versions as needed!
+        blender_version: ["4.2.0", "4.2.1", "4.3.0"]  # Add newer versions as needed!
 
     env:
       BLENDER_VERSION: ${{ matrix.blender_version }}
@@ -41,25 +41,25 @@ jobs:
 
       - name: Install pytest in Blender's Python
         run: |
-          BLENDER_MAJOR_MINOR=$(echo "${{ env.BLENDER_VERSION }}" | cut -d. -f1,2)
-          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11"
+          # Dynamically find Blender's embedded Python binary
+          PYTHON_BIN=$(find "${{ env.BLENDER_DIR }}" -type f -name "python3*" | head -n 1)
+          echo "Using Python binary: ${PYTHON_BIN}"
 
           "${{ env.BLENDER_DIR }}/blender" --background --python-expr \
           "import subprocess as sp; \
-           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11'; \
-           sp.run([python_bin, '-m', 'ensurepip']); \
-           sp.run([python_bin, '-m', 'pip', 'install', '--upgrade', 'pip']); \
-           sp.run([python_bin, '-m', 'pip', 'install', 'pytest'])"
+           sp.run([r'${PYTHON_BIN}', '-m', 'ensurepip']); \
+           sp.run([r'${PYTHON_BIN}', '-m', 'pip', 'install', '--upgrade', 'pip']); \
+           sp.run([r'${PYTHON_BIN}', '-m', 'pip', 'install', 'pytest'])"
 
-      - name: Run pytest inside Blender
+      - name: Run pytest inside Blender (root dir)
         env:
           PYTHONPATH: ${{ github.workspace }}/src
           BLENDER_USER_SCRIPTS: ${{ github.workspace }}/src
         run: |
-          BLENDER_MAJOR_MINOR=$(echo "${{ env.BLENDER_VERSION }}" | cut -d. -f1,2)
-          PYTHON_BIN="${{ env.BLENDER_DIR }}/${BLENDER_MAJOR_MINOR}/python/bin/python3.11"
+          # Dynamically find Blender's embedded Python binary
+          PYTHON_BIN=$(find "${{ env.BLENDER_DIR }}" -type f -name "python3*" | head -n 1)
+          echo "Using Python binary: ${PYTHON_BIN}"
 
           "${{ env.BLENDER_DIR }}/blender" --background --python-expr \
           "import subprocess as sp; \
-           python_bin = r'${{ env.BLENDER_DIR }}/' + '${BLENDER_MAJOR_MINOR}' + '/python/bin/python3.11'; \
-           sp.run([python_bin, '-m', 'pytest', '--maxfail=1', '--disable-warnings', '-v', 'src'])"
+           sp.run([r'${PYTHON_BIN}', '-m', 'pytest', '--maxfail=1', '--disable-warnings', '-v'])"
