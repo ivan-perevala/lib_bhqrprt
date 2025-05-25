@@ -17,7 +17,7 @@ Python Logging and Blender Integration Package
 
 .. image::
    https://img.shields.io/badge/license-GPLv3-yellow.svg
-   :alt: License: MIT
+   :alt: License: GPL-3.0-or-later
    :target: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 .. image::
