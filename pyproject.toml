@@ -7,13 +7,14 @@
 # ----------------------------------------------------------------------------------------------------------------------
 [project]
 name = "bhqrprt"
-version = "4.2.0"
+version = "4.2.1"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 description = "Logging system for Blender extensions"
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
@@ -28,7 +29,7 @@ dynamic = ["optional-dependencies"]
 [project.urls]
 Homepage = "https://github.com/ivan-perevala/lib_bhqrprt"
 Issues = "https://github.com/ivan-perevala/lib_bhqrprt/issues"
-Documentation = "https://lib-bhqrprt.readthedocs.io/4.2.0/"
+Documentation = "https://lib-bhqrprt.readthedocs.io/4.2.1/"
 
 [tool.setuptools.dynamic]
 optional-dependencies = { docs = { file = [
