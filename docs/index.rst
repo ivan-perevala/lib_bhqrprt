@@ -16,9 +16,9 @@ Python Logging and Blender Integration Package
    :target: https://pypi.org/project/bhqrprt/
 
 .. image::
-   https://img.shields.io/badge/License-MIT-yellow.svg
+   https://img.shields.io/badge/license-GPLv3-yellow.svg
    :alt: License: MIT
-   :target: https://opensource.org/licenses/MIT
+   :target: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 .. image::
    https://readthedocs.org/projects/lib-bhqrprt/badge/?version=latest
