@@ -27,11 +27,13 @@ Python Logging and Blender Integration Package
 
 .. image::
    https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml/badge.svg
-   :alt: Tests
+   :alt: Spell Check Tests
+   :target: https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml
 
-.. .. image::
-..    https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/python-tests.yml/badge.svg
-..    :alt: Tests
+.. image::
+   https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/blender-test.yml/badge.svg
+   :alt: Blender Tests
+   :target: https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/blender-test.yml
 
 Links
 *****

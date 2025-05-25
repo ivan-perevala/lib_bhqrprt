@@ -10,7 +10,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 [![Status](https://img.shields.io/pypi/status/bhqrprt.svg)](https://pypi.org/project/bhqrprt/)
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/license-GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0-standalone.html)
 [![Documentation Status](https://readthedocs.org/projects/lib-bhqrprt/badge/?version=latest)](https://lib-bhqrprt.readthedocs.io/latest)
-![Spell Check](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml/badge.svg)
+[![Spell Check](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml/badge.svg)](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/spellcheck.yml)
 [![Blender Addon Testing](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/blender-test.yml/badge.svg)](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/blender-test.yml)
 <!-- ![Tests](https://github.com/ivan-perevala/lib_bhqrprt/actions/workflows/python-tests.yml/badge.svg) -->
 
