@@ -12,6 +12,7 @@
 from __future__ import annotations
 
 import logging
+import importlib
 import os
 import pprint
 import time
@@ -22,6 +23,7 @@ import bpy
 from bpy.app.translations import pgettext
 from bpy.props import EnumProperty, PointerProperty, IntProperty, StringProperty
 from bpy.types import Context, Operator, UILayout, bpy_prop_array, bpy_struct, AddonPreferences, PropertyGroup, Event
+import addon_utils
 
 from . import _reports
 
@@ -274,6 +276,18 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
                             stream_handler.setLevel(value)
 
                         _reports.purge_old_logs(directory=directory, max_num_logs=addon_pref.bhqrprt.max_num_logs)
+
+                        try:
+                            mod = importlib.import_module(pref_cls.bl_idname)
+                        except ModuleNotFoundError:
+                            pass
+                        else:
+                            bl_info: dict = addon_utils.module_bl_info(mod=mod)
+                            name = bl_info.get("name")
+                            version = bl_info.get('version')
+                            if isinstance(version, tuple):
+                                version = ', '.join((str(_) for _ in version))
+                            log.debug(f"Add-on: \"{name}\"; version: {version}; package: \"{pref_cls.bl_idname}\"")
 
                         log_bpy_struct_properties(log, struct=addon_pref)
 
