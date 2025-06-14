@@ -175,6 +175,8 @@ def log_bpy_struct_properties(log: Logger, *, struct: bpy_struct, indent: int = 
     :type indent: int, optional
     """
 
+    log.debug(f"{' ' * 4 * indent}Struct: \"{type(struct).__name__}\":")
+
     for prop in struct.bl_rna.properties:
         if prop.identifier in {
             # Blacklist of internal Blender properties, they should not be logged.
@@ -186,12 +188,12 @@ def log_bpy_struct_properties(log: Logger, *, struct: bpy_struct, indent: int = 
 
         if type(prop.rna_type) == bpy.types.PointerProperty:
             # Recursive call for pointer properties:
-            log.debug(f"{prop.identifier} (\"{prop.name}\"):")
+            log.debug(f"{' ' * 4 * (indent + 1)}{prop.identifier} (\"{prop.name}\"):")
             log_bpy_struct_properties(log, struct=getattr(struct, prop.identifier), indent=indent + 1)
         else:
             value = _format_bpy_struct_property_value(
                 value=_get_bpy_struct_property_value(item=struct, identifier=prop.identifier))
-            log.debug(f"{' ' * 4 * indent}{prop.identifier}: {value}")
+            log.debug(f"{' ' * 4 * (indent + 1)}{prop.identifier}: {value}")
 
 
 def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: str):
