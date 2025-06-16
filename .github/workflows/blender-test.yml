@@ -3,8 +3,15 @@ name: Blender Test (4.2, 4.3, 4.4) # Add newer versions as needed!
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
   pull_request:
     branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+    types: [closed]
 
 jobs:
   test-addon:
