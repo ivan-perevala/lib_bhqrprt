@@ -268,10 +268,11 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
             pref = bpy.context.preferences
             assert pref
             addon = pref.addons.get(pref_cls.bl_idname, None)
+
             if addon:
                 addon_pref = addon.preferences
                 if addon_pref:
-                    setattr(pref_cls, "draw", _draw_log_settings_helper(getattr(addon_pref, "draw")))
+                    setattr(addon_pref, "draw", _draw_log_settings_helper(getattr(addon_pref, "draw")))
 
                     if value := addon_pref.bhqrprt.log_level:
                         if stream_handler := _get_logger_stream_handler(log):
