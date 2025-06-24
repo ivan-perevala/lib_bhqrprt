@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 [project]
 name = "bhqrprt"
-version = "4.2.4"
+version = "4.2.5"
 authors = [{ name = "Ivan Perevala", email = "ivan95perevala@gmail.com" }]
 description = "Logging system for Blender extensions"
 readme = "README.md"
@@ -29,7 +29,7 @@ dynamic = ["optional-dependencies"]
 [project.urls]
 Homepage = "https://github.com/ivan-perevala/lib_bhqrprt"
 Issues = "https://github.com/ivan-perevala/lib_bhqrprt/issues"
-Documentation = "https://lib-bhqrprt.readthedocs.io/4.2.4/"
+Documentation = "https://lib-bhqrprt.readthedocs.io/4.2.5/"
 
 [tool.setuptools.dynamic]
 optional-dependencies = { docs = { file = [
