@@ -50,6 +50,7 @@ build-backend = "setuptools.build_meta"
 # https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html#setuptools-specific-configuration
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["bhqrprt*"]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Include LICENSE files as package data for project.
