@@ -272,7 +272,9 @@ def register_reports(log: Logger, pref_cls: Type[AddonPreferences], directory: s
             if addon:
                 addon_pref = addon.preferences
                 if addon_pref:
-                    setattr(addon_pref, "draw", _draw_log_settings_helper(getattr(addon_pref, "draw")))
+                    if not hasattr(pref_cls, "_original_draw"):
+                        setattr(pref_cls, "_original_draw", getattr(pref_cls, "draw"))
+                    setattr(pref_cls, "draw", _draw_log_settings_helper(getattr(addon_pref, "_original_draw")))
 
                     if value := addon_pref.bhqrprt.log_level:
                         if stream_handler := _get_logger_stream_handler(log):
